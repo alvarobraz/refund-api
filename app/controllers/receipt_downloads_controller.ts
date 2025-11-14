@@ -9,7 +9,6 @@ export default class ReceiptDownloadsController {
   @inject()
   async handle({ request }: HttpContext, receiptService: ReceiptService) {
     const payload = await request.validateUsing(handleReceiptDownloadsValidator)
-
     const result = await receiptService.findById(payload)
 
     const localDrive = drive.use('fs')
